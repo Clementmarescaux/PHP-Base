@@ -8,6 +8,10 @@ $resultat1 = $quinze + $cinq + $huit;
 $resultat2 = $quinze * ($cinq + $huit);
 $resultat3 = ($huit + $cinq) / $quinze;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 echo $quinze . '+' . '5 +' . '8 =' . ($resultat1). "<br/>";
 echo $quinze . 'x' . "(" . $cinq . '+' . $huit . ")" . '=' . ($resultat2) . "<br/>";
 
