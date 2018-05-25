@@ -7,3 +7,6 @@ $secondes = date('s', strtotime('now'));
 
 echo "<br/>";
 echo $date . ", il est " . $heure . "h" . $minutes . " et " . $secondes . " secondes!";
+
+echo '<br/>';
+echo date('l d F Y', strtotime('+ 10 days'));
