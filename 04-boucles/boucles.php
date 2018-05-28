@@ -21,6 +21,8 @@ $reste = null;
 $pgcd = null;
 
 // Boucle while
+
+
 var_dump(null !== 0); // var_dump permet d'afficher le type et le résultat : bool: true dans ce cas
 
 echo ' le PGCD de ' . $nombre1 . ' et ' . $nombre2 . ' est ';
