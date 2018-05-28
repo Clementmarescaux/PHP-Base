@@ -32,7 +32,7 @@ $students = [
     ],
     2 => [
         'name' => 'Jamy',
-        'marks' => [18, 20, 12, 18, 16, 14, 13, 20, 20]
+        'marks' => [18, 19, 12, 18, 16, 14, 13, 19, 19]
     ],
     3 => [
         'name' => 'Eliott',
@@ -89,16 +89,50 @@ foreach($students as $student) {
     }
 }
 
+$markToCheck = 0;
+$markIsChecked = false;
+
 var_dump($markMax);
 foreach($students as $student) {
     foreach($student['marks'] as $mark) {  
    
         if ($mark === $markMax) {
            echo $student['name'] . ' a la meilleure note de la classe : ' . $markMax . '<br/>';
-           break; // arrête la boucle quand l'élève a au moins une fois la meilleure note.
+          // break; // arrête la boucle quand l'élève a au moins une fois la meilleure note.
+        break 2; // arrête les deux boucles
         }
     }
 }
+
+if ($markToCheck) {
+    echo "quelqu'un a eu 20";
+} else {
+    echo "personne n'a eu 20";
+}
+
+/* TRI A BULLES
+
+echo '<br/>';
+
+$marks = [4, 25, 1, 36, 24];
+$i = 0;
+$count = count($marks) - 1;
+var_dump ($marks);
+
+while ($i < $count) {
+    if ($marks[$i] > $marks[$i + 1]) {
+        $tmp = $notes[$i]; // on stocke le 4
+        $marks[$i] > $marks[$i + 1]; // on met le 25 à la place du 4
+        $marks[$i + 1] > $tmp;
+        $i = 0;
+    } else {
+        $i++;
+    }
+}
+var_dump ($marks);
+
+*/
+
 
 
 
