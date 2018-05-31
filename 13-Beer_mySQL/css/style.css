@@ -1,0 +1,65 @@
+
+.navbar-light {
+    box-shadow: 0 0 50px black;
+    background-color: white;
+}
+
+.head {
+    background-image: url(../img/background.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10rem 20rem;
+    box-shadow: 0 0 50px black inset;
+}
+
+.bg2 {
+    background-image: url(../img/background2.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10rem 20rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 0 50px black inset;
+}
+
+h1 {
+    font-size: 3.5rem;
+    padding: 0;
+    color: white;
+    text-shadow:1px 1px 2px grey;
+}
+
+.beer-img {
+    width : 150px;
+    height : 150px;
+}
+
+.no-border {
+    border: 0;
+    box-shadow: 0 0 20px grey;
+}
+
+.btn {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    box-shadow: 1px 1px 5px grey;
+    background-color: brown;
+    color: white;
+    
+   
+}
+
+.btn:hover {
+    color: beige;
+    
+}
+
+.list-group {
+    margin-top : 7rem;
+}
+
+.img-fluid {
+    margin-top : 2rem;
+}
