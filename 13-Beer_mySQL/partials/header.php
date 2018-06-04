@@ -32,15 +32,20 @@
         <?php $page = basename($_SERVER['REQUEST_URI'], '.php'); ?>
 
         <ul class="navbar-nav">
-        <li class="nav-item <?php echo ($page == 'index') ? 'active' : '' ?>">
-            <a class="nav-link" href="index.php">Accueil</a>
-        </li>
-        <li class="nav-item <?php echo ($page == 'beer_list') ? 'active' : '' ?>">
-            <a class="nav-link" href="beer_list.php">Les Bières</a>
-        </li>
-        <li class="nav-item <?php if ($page == 'beer_add') { echo 'active'; } ?>">
-            <a class="nav-link" href="beer_add.php">Ajouter une bières</a>
-        </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control my-2 my-sm-0 ml-2" type="search" placeholder="Rechercher sur le site" aria-label="Search">
+                <button class="btn ml-2 my-2 my-sm-0 mr-5" type="submit">GO !</button>
+            </form>
+            <li class="nav-item <?php echo ($page == 'index') ? 'active' : '' ?>">
+                <a class="nav-link" href="index.php">Accueil</a>
+            </li>
+            <li class="nav-item <?php echo ($page == 'beer_list') ? 'active' : '' ?>">
+                <a class="nav-link" href="beer_list.php">Les Bières</a>
+            </li>
+            <li class="nav-item <?php if ($page == 'beer_add') { echo 'active'; } ?>">
+                <a class="nav-link" href="beer_add.php">Ajouter une bières</a>
+            </li>
+            
         </ul>
     </div>
   </div>

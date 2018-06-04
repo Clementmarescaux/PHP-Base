@@ -39,6 +39,7 @@ $beers= $query->fetchAll();
     $size = null;
     $brand = null;
     $type = null;
+    $image = null;
 
     // détecter quand le form est soumis
     // On peut utiliser $_SERVER
@@ -50,12 +51,17 @@ $beers= $query->fetchAll();
         $brand = $_POST['brand']; // Doit exister dans la base de données
         $type = $_POST['type']; // Doit exister dans la base de données
 
+     // Erreur si l'image n'est pas uploadée
     
 
     // Raccourci avec interpolation de variables
     foreach ($_POST as $key => $field) {
         $$key = $field;
     }
+}
+
+if (!empty($_FILES['image']['tmp_name'])) {
+    $image = $_FILES['image'];
 }
 ?>
 
@@ -66,6 +72,9 @@ $beers= $query->fetchAll();
             <div class="form-group">
                 <label for="name"><strong>Nom : </strong></label>
                 <input type="text" class="form-control" id="name" placeholder="Nom de la bière" name="name" value="<?php echo $name ?>">
+                <?php if (isset($erros[`name`])) {
+                    
+                } ?>
                 <label for="degree"><strong>Degrés : </strong></label>
                 <input type="text" class="form-control" id="degree" placeholder="Pourcentage d'alcool" name="degree" value="<?php echo $degree ?>">
 
@@ -108,7 +117,7 @@ $beers= $query->fetchAll();
         </div>
     </div>
     <div class="row">         
-        <div class="col offset-6">
+        <div class="col">
             <label for="image" class="label-file"><strong>Choisir une image :</strong> </label><br/>
             <input  class="input-file" type="file" name="image"/>
         </div>
@@ -134,15 +143,6 @@ function slugify($string){
     return $newString;
 }
 
-
-/*
-function slugify($string){
-    # special accents
-    $a = array('À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ð','Ñ','Ò','Ó','Ô','Õ','Ö','Ø','Ù','Ú','Û','Ü','Ý','ß','à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','ÿ','A','a','A','a','A','a','C','c','C','c','C','c','C','c','D','d','Ð','d','E','e','E','e','E','e','E','e','E','e','G','g','G','g','G','g','G','g','H','h','H','h','I','i','I','i','I','i','I','i','I','i','?','?','J','j','K','k','L','l','L','l','L','l','?','?','L','l','N','n','N','n','N','n','?','O','o','O','o','O','o','Œ','œ','R','r','R','r','R','r','S','s','S','s','S','s','Š','š','T','t','T','t','T','t','U','u','U','u','U','u','U','u','U','u','U','u','W','w','Y','y','Ÿ','Z','z','Z','z','Ž','ž','?','ƒ','O','o','U','u','A','a','I','i','O','o','U','u','U','u','U','u','U','u','U','u','?','?','?','?','?','?');
-    $b = array('A','A','A','A','A','A','AE','C','E','E','E','E','I','I','I','I','D','N','O','O','O','O','O','O','U','U','U','U','Y','s','a','a','a','a','a','a','ae','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','o','u','u','u','u','y','y','A','a','A','a','A','a','C','c','C','c','C','c','C','c','D','d','D','d','E','e','E','e','E','e','E','e','E','e','G','g','G','g','G','g','G','g','H','h','H','h','I','i','I','i','I','i','I','i','I','i','IJ','ij','J','j','K','k','L','l','L','l','L','l','L','l','l','l','N','n','N','n','N','n','n','O','o','O','o','O','o','OE','oe','R','r','R','r','R','r','S','s','S','s','S','s','S','s','T','t','T','t','T','t','U','u','U','u','U','u','U','u','U','u','U','u','W','w','Y','y','Y','Z','z','Z','z','Z','z','s','f','O','o','U','u','A','a','I','i','O','o','U','u','U','u','U','u','U','u','U','u','A','a','AE','ae','O','o');
-    return strtolower(preg_replace(array('/[^a-zA-Z0-9 -]/','/[ -]+/','/^-|-$/'),array('','-',''),str_replace($a,$b,$string)));
-}
-*/
     if (!empty($_POST)) {
     // Définir un tableau d'erreur vide qui va se remplir après chaque erreur
     $errors=  [];
@@ -188,10 +188,32 @@ function slugify($string){
 
      if (!$type) {
         $errors['type'] = 'le type n\'est pas connue dans la base de donnée';     
-        
-         
      }
-    // var_dump($errors);  
+        // Erreur si l'image n'est pas uploadée
+    if ($image === null) {
+        $errors['image'] = "l'image n'a pas été uploadée";
+    }
+
+        //erreur si l'image uploadé n'a pas le bon mimetype
+        //utiliser finfo_file
+
+     if ($image) {
+        $file = $image['tmp_name']; // l'emplacement temporaire du fichier uploadé
+        $finfo = finfo_open(FILEINFO_MIME_TYPE); // Permet d'ouvrir un fichier
+        $mimeType = finfo_file($finfo, $file); // Ouvre le fichier et renvoie image/jpg
+        $allowedExtensions = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+        if (!in_array($mimeType, $allowedExtensions)) {
+            $errors['image'] = "Ce type de fichier n'est pas autorisé";
+        }
+
+        // Si la taille de l'image est trop élevée
+
+        if ($image['size'] > 2097152) { // = 2 Mo
+            $errors['image'] = "La taille du fichier est trop élevée";
+        }
+    }
+
+      //  var_dump($errors);  
 
      // S'il n'y a pas d'erreur dans le formulare
      if ($errors){
@@ -229,7 +251,16 @@ function slugify($string){
             $brand = slugify($brand['name']);
             $name = slugify($name);
             $filename = $brand.'-'.$name.'.'.$extension;
+
+            // Déplacer le fichier dans le dossier img
+            move_uploaded_file($file, __DIR__.'/img/'.$filename);
            
+            // Requête pour mettre à jour la bière en BDD afin d'associer l'image
+            $query = $db->prepare('UPDATE beer SET `image` = :image WHERE id = :id');
+            $query->bindValue(':image', 'img/' .$filename, PDO::PARAM_STR);
+            $query->bindValue(':id', $db->lastInsertId(), PDO::PARAM_INT); // On récupère l'ID de la dernière bière ajoutée
+            $query->execute();
+
             echo '<div class="alert alert-success">🍺🍺<br/>Cheers!! </div>';
            
         } 
@@ -240,13 +271,8 @@ function slugify($string){
 }
 // vérifier les champs
 
-$name = 'Ch\'ti Ambrée';
-$brand = 'Ch\'ti';
-$test = slugify($brand);
-$test = slugify($name);
 
-var_dump($test);
-var_dump($_FILES);
+// var_dump($_FILES);
 
 // var_dump($_POST); 
 require('partials/footer.php');
