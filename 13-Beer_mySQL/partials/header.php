@@ -14,6 +14,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
 
     <title>Bière Shop</title>
   </head>
@@ -21,7 +23,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light d-flex fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.php"><img id="logo" src="img/logo.png"/><strong>Mon Bière Shop</strong></a>
+    <a class="navbar-brand" href="index.php"><img id="logo" src="img/logo.png"/><strong class="typo-logo">Mon Bière Shop</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
