@@ -5,9 +5,13 @@
 
 require('partials/header.php');
 
-$query = $db->query('SELECT * FROM beer');
-
+$query = $db->query('SELECT beer.id, beer.name, beer.image, brand.id as id_brand, brand.name as name_beer, ebc.code, ebc.color 
+FROM beer 
+INNER JOIN brand ON beer.brand_id = brand.id
+INNER JOIN ebc ON beer.ebc_id = ebc.id
+');
 $beers= $query->fetchAll();
+$countSQL++;
 
 // var_dump($beers);
 ?>
@@ -23,8 +27,15 @@ $beers= $query->fetchAll();
             echo '<div class="col-md-3">';
                 echo '<div class="no-border card mb-4">';
                     echo '<img class="beer-img card-img-top d-block m-auto" src="'.$beer['image'].'"/>';
+                    
                         echo  '<div class="text-center card-body">';
-                            echo '<strong>' . $beer['name'] . '</strong>';
+                            echo '<p><strong>' . $beer['name'] . '</strong></p>';
+                            ?>
+                                <p class="d-inline-block" style="background-color: #<?php echo $beer['color']; ?>; margin: 0; width: 20px; height: 20px; border-radius: 50px;"></p>
+                            <?php
+                            echo '<p>Marque : ' . $beer['name_beer'] .'</p>';
+                            
+                            
                                 echo '<div><a class="btn" href="beer_single.php?id='.$beer['id'].'">Voir +</a></div>';
                             // Ajouter un bouton (a href) "voir +"
                             //Quand on clique dessus, on se rend sur la page beer_single.php 

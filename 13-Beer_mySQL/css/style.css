@@ -52,8 +52,15 @@ nav {
 
 }
 
+.bg5 {
+    background-image: url(https://www.millercoors.com/sites/millercoors/files/hero-media/CoorsBreweryBrewKettle-Hero.jpg);
+
+}
+
+
+
 .lead-sentence {
-    background-image: url(../img/background2.jpg);
+    background-image: url(https://images.pexels.com/photos/697244/pexels-photo-697244.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;

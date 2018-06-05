@@ -72,7 +72,7 @@ if (!empty($_FILES['image']['tmp_name'])) {
             <div class="form-group">
                 <label for="name"><strong>Nom : </strong></label>
                 <input type="text" class="form-control" id="name" placeholder="Nom de la bière" name="name" value="<?php echo $name ?>">
-                <?php if (isset($erros[`name`])) {
+                <?php if (isset($errors[`name`])) {
                     
                 } ?>
                 <label for="degree"><strong>Degrés : </strong></label>

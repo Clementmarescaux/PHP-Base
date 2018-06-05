@@ -37,21 +37,23 @@
         <?php $page = basename($_SERVER['REQUEST_URI'], '.php'); ?>
 
         <form method="GET" action="search.php" class=" form-inline my-2 my-lg-0">
-                <input name="q" class="d-none d-md-inline-block form-control my-2 my-sm-0 ml-2" type="search" placeholder="Rechercher sur le site" aria-label="Search">
-                <button class="d-none d-md-inline-block btn ml-2 my-2 my-sm-0 mr-5" type="submit" value="SAISIE">GO !</button>
+                <input name="q" class="d-none d-lg-inline-block form-control my-2 my-sm-0 ml-2" type="search" placeholder="Rechercher sur le site" aria-label="Search">
+                <button class="d-none d-lg-inline-block btn ml-2 my-2 my-sm-0 mr-5" type="submit" value="SAISIE">GO !</button>
         </form>
         <ul class="navbar-nav">
-            
-            <li class="nav-item <?php echo ($page == 'index') ? 'active' : '' ?>">
-                <a class="nav-link" href="index.php">Accueil</a>
-            </li>
+           
             <li class="nav-item <?php echo ($page == 'beer_list') ? 'active' : '' ?>">
                 <a class="nav-link" href="beer_list.php">Les Bières</a>
             </li>
             <li class="nav-item <?php if ($page == 'beer_add') { echo 'active'; } ?>">
-                <a class="nav-link" href="beer_add.php">Ajouter une bières</a>
+                <a class="nav-link" href="beer_add.php">Add bière</a>
             </li>
-            
+            <li class="nav-item <?php if ($page == 'brewery_list') { echo 'active'; } ?>">
+                <a class="nav-link" href="brewery_list.php">Brasserie</a>
+            </li>         
+            <li class="nav-item <?php if ($page == 'brewery_add') { echo 'active'; } ?>">
+                <a class="nav-link" href="brewery_add.php">Add brasserie</a>
+            </li>   
         </ul>
     </div>
   </div>
