@@ -12,9 +12,9 @@ $beers= $query->fetchAll();
 // var_dump($beers);
 ?>
 <!-- Le contenu de la page -->
-<div class="bg2">
+<div class="bg bg2">
     <div class="container pt-5">
-        <h1>La bière list</h1>
+        <h1 class="d-flex justify-content-center text-left">La bière list</h1>
     </div>
 </div>
 <div class="container">

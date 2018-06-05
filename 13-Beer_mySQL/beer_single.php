@@ -12,22 +12,25 @@ $query = $db->prepare('SELECT * FROM beer WHERE id = :id'); // permet de se pré
 $query->bindvalue(':id', $id, PDO::PARAM_INT); // on s'assure que l'id est entier
 $query->execute();
 $beer = $query->fetch();
+$countSQL++;
 
 // Récupérer la marque de la bière
 $query = $db->query('SELECT * FROM brand WHERE id = '.$beer['brand_id']);
 $brand = $query->fetch();
+$countSQL++;
 
 
 $query = $db->prepare('SELECT * FROM ebc WHERE id = :id'); // permet de se prémunir des injection SQL (plutot que query)
 $query->bindvalue(':id', $beer['ebc_id'], PDO::PARAM_INT); 
 $query->execute();
 $ebc = $query->fetch();
+$countSQL++;
 
 ?>
 <!-- Le contenu de la page -->
 <div class="head">
     <div class="container">
-        <h1 class="d-flex justify-content-end text-right">
+        <h1 class="d-flex justify-content-end text-left">
             <?php echo 'La ' . $beer['name']; ?>           
         </h1>        
     </div>   

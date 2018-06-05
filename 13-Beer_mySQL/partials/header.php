@@ -2,6 +2,10 @@
  // Configuration de PDO pour la BDD
  // On utilise la notation absolue pour se repérer
  require(__DIR__.'/../config/database.php');
+
+
+
+
 ?>
 
 <!doctype html>
@@ -27,15 +31,17 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
-
+            
         <?php $page = basename($_SERVER['REQUEST_URI'], '.php'); ?>
 
+        <form method="GET" action="search.php" class=" form-inline my-2 my-lg-0">
+                <input name="q" class="d-none d-md-inline-block form-control my-2 my-sm-0 ml-2" type="search" placeholder="Rechercher sur le site" aria-label="Search">
+                <button class="d-none d-md-inline-block btn ml-2 my-2 my-sm-0 mr-5" type="submit" value="SAISIE">GO !</button>
+        </form>
         <ul class="navbar-nav">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control my-2 my-sm-0 ml-2" type="search" placeholder="Rechercher sur le site" aria-label="Search">
-                <button class="btn ml-2 my-2 my-sm-0 mr-5" type="submit">GO !</button>
-            </form>
+            
             <li class="nav-item <?php echo ($page == 'index') ? 'active' : '' ?>">
                 <a class="nav-link" href="index.php">Accueil</a>
             </li>

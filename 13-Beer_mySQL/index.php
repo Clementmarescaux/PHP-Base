@@ -10,29 +10,29 @@ require('partials/header.php');
 <!-- Le contenu de la page -->
 <div class="head">
     <div class="container">
-        <h1 class="d-flex justify-content-end text-right">Welcome to Mon Bière Shop</h1>
+        <h1 class="d-flex justify-content-end text-left">Welcome to Mon Bière Shop</h1>
     </div>
 </div>
 <div class="container marketing">
 
 <!-- Three columns of text below the carousel -->
 <div class="row">
-  <div class="col-lg-4">
-    <img class="rounded-circle" src="http://www.anheuser-busch.com/content/dam/universaltemplate/ab/abhomepage/beers_prod.jpg" alt="Generic placeholder image" width="140" height="140">
-    <h2>Nos bières</h2>
-    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+  <div class="col-lg-4 text-center">
+    <img class="rounded-circle " src="http://www.anheuser-busch.com/content/dam/universaltemplate/ab/abhomepage/beers_prod.jpg" alt="Generic placeholder image" width="140" height="140">
+    <h2 class="text-left">Nos bières</h2>
+    <p class="text-left">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
     <p><a class="btn" href="beer_list.php" role="button">Je découvre !</a></p>
   </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4">
+  <div class="col-lg-4 text-center">
     <img class="rounded-circle" src="https://joy.org.au/theescapehour/wp-content/uploads/sites/367/2018/05/CraftBeer.png" alt="Generic placeholder image" width="140" height="140">
-    <h2>Proposez votre bière</h2>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-    <p><a class="btn" href="beer_add.php" role="button">Je propose !</a></p>
+    <h2 class="text-left">Proposez votre bière</h2>
+    <p class="text-left">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+    <p ><a class="btn" href="beer_add.php" role="button">Je propose !</a></p>
   </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-    <img class="rounded-circle" src="https://www.washingtonpost.com/resizer/vpY-LhIp3B_P1QRN5E1JoRh1t6I=/1400x0/arc-anglerfish-washpost-prod-thelily-washpost.s3.amazonaws.com/public/CKSUCA472BBRBD6LRLSZCXSQOI.jpeg" alt="Generic placeholder image" width="140" height="140">
-    <h2>L'équipe</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
+  <div class="col-lg-4 text-center">
+    <img class="rounded-circle" src="http://www.pizzafons.com/_dynamique/gestionContenus02/zoom/repas-de-groupe-1024x768-25.jpg" alt="Generic placeholder image" width="140" height="140">
+    <h2 class="text-left">L'équipe</h2>
+    <p class="text-left">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.</p>
     <p><a class="btn" href="#" role="button">Je rencontre la team !</a></p>
   </div><!-- /.col-lg-4 -->
 </div><!-- /.row -->

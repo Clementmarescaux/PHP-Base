@@ -27,9 +27,9 @@ $beers= $query->fetchAll();
 
 ?>
 
-<div class="bg2">
+<div class="bg bg4">
     <div class="container pt-5">
-        <h1>Ajouter une bière</h1>
+        <h1 class="d-flex justify-content-end text-left">Ajouter une bière</h1>
     </div>
 </div>
 <?php
