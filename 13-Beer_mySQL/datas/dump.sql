@@ -1,29 +1,35 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1    Database: beer_pdo
--- ------------------------------------------------------
--- Server version	5.5.5-10.1.26-MariaDB
+-- Hôte : 127.0.0.1
+-- Généré le :  mer. 06 juin 2018 à 16:36
+-- Version du serveur :  10.1.26-MariaDB
+-- Version de PHP :  7.1.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `beer`
+-- Base de données :  `beer_pdo`
 --
 
-DROP TABLE IF EXISTS `beer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `beer`
+--
+
 CREATE TABLE `beer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(225) DEFAULT NULL,
   `degree` float(3,1) DEFAULT NULL,
   `size` int(11) DEFAULT NULL,
@@ -31,158 +37,200 @@ CREATE TABLE `beer` (
   `price` float(8,2) DEFAULT NULL,
   `beerscol` varchar(45) DEFAULT NULL,
   `ebc_id` int(11) NOT NULL,
-  `brand_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_beers_ebc_idx` (`ebc_id`),
-  KEY `fk_beers_brand1_idx` (`brand_id`),
-  CONSTRAINT `fk_beers_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_beers_ebc` FOREIGN KEY (`ebc_id`) REFERENCES `ebc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `brand_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `beer`
+-- Structure de la table `brand`
 --
 
-LOCK TABLES `beer` WRITE;
-/*!40000 ALTER TABLE `beer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `beer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `brand`
---
-
-DROP TABLE IF EXISTS `brand`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `brand` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `brand`
+-- Structure de la table `brewery`
 --
 
-LOCK TABLES `brand` WRITE;
-/*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-/*!40000 ALTER TABLE `brand` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `brewery`
---
-
-DROP TABLE IF EXISTS `brewery`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `brewery` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `city` varchar(225) DEFAULT NULL,
-  `zip` int(11) DEFAULT NULL,
-  `country` varchar(225) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `zip` varchar(10) DEFAULT NULL,
+  `country` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `brewery`
+-- Structure de la table `brewery_has_brand`
 --
 
-LOCK TABLES `brewery` WRITE;
-/*!40000 ALTER TABLE `brewery` DISABLE KEYS */;
-/*!40000 ALTER TABLE `brewery` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `brewery_has_brand`
---
-
-DROP TABLE IF EXISTS `brewery_has_brand`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `brewery_has_brand` (
   `brewery_id` int(11) NOT NULL,
-  `brand_id` int(11) NOT NULL,
-  KEY `fk_brewery_has_brand_brand1_idx` (`brand_id`),
-  KEY `fk_brewery_has_brand_brewery1_idx` (`brewery_id`),
-  CONSTRAINT `fk_brewery_has_brand_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_brewery_has_brand_brewery1` FOREIGN KEY (`brewery_id`) REFERENCES `brewery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `brand_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `brewery_has_brand`
+-- Structure de la table `ebc`
 --
 
-LOCK TABLES `brewery_has_brand` WRITE;
-/*!40000 ALTER TABLE `brewery_has_brand` DISABLE KEYS */;
-/*!40000 ALTER TABLE `brewery_has_brand` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ebc`
---
-
-DROP TABLE IF EXISTS `ebc`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ebc` (
   `id` int(11) NOT NULL,
   `code` int(11) DEFAULT NULL,
-  `color` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `color` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `ebc`
+-- Structure de la table `mark`
 --
 
-LOCK TABLES `ebc` WRITE;
-/*!40000 ALTER TABLE `ebc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ebc` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `mark`
---
-
-DROP TABLE IF EXISTS `mark`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mark` (
   `id` int(11) NOT NULL,
   `mark` int(11) DEFAULT NULL,
   `comments` longtext,
-  `beers_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_marks_beers1_idx` (`beers_id`),
-  CONSTRAINT `fk_marks_beers1` FOREIGN KEY (`beers_id`) REFERENCES `beer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `beers_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `mark`
+-- Structure de la table `user`
 --
 
-LOCK TABLES `mark` WRITE;
-/*!40000 ALTER TABLE `mark` DISABLE KEYS */;
-/*!40000 ALTER TABLE `mark` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `beer`
+--
+ALTER TABLE `beer`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_beers_ebc_idx` (`ebc_id`),
+  ADD KEY `fk_beers_brand1_idx` (`brand_id`);
+
+--
+-- Index pour la table `brand`
+--
+ALTER TABLE `brand`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `brewery`
+--
+ALTER TABLE `brewery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `brewery_has_brand`
+--
+ALTER TABLE `brewery_has_brand`
+  ADD KEY `fk_brewery_has_brand_brand1_idx` (`brand_id`),
+  ADD KEY `fk_brewery_has_brand_brewery1_idx` (`brewery_id`);
+
+--
+-- Index pour la table `ebc`
+--
+ALTER TABLE `ebc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `mark`
+--
+ALTER TABLE `mark`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_marks_beers1_idx` (`beers_id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `beer`
+--
+ALTER TABLE `beer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT pour la table `brand`
+--
+ALTER TABLE `brand`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `brewery`
+--
+ALTER TABLE `brewery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT pour la table `ebc`
+--
+ALTER TABLE `ebc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `mark`
+--
+ALTER TABLE `mark`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `beer`
+--
+ALTER TABLE `beer`
+  ADD CONSTRAINT `fk_beers_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_beers_ebc` FOREIGN KEY (`ebc_id`) REFERENCES `ebc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `brewery_has_brand`
+--
+ALTER TABLE `brewery_has_brand`
+  ADD CONSTRAINT `fk_brewery_has_brand_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_brewery_has_brand_brewery1` FOREIGN KEY (`brewery_id`) REFERENCES `brewery` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `mark`
+--
+ALTER TABLE `mark`
+  ADD CONSTRAINT `fk_marks_beers1` FOREIGN KEY (`beers_id`) REFERENCES `beer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-05-31 10:27:06

@@ -41,19 +41,26 @@
                 <button class="d-none d-lg-inline-block btn ml-2 my-2 my-sm-0 mr-5" type="submit" value="SAISIE">GO !</button>
         </form>
         <ul class="navbar-nav">
-           
-            <li class="nav-item <?php echo ($page == 'beer_list') ? 'active' : '' ?>">
-                <a class="nav-link" href="beer_list.php">Les Bières</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?php echo ($page == 'beer_list' || $page == 'beer_add') ? 'active' : '' ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bières</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="beer_list.php">Bières list</a>
+                    <a class="dropdown-item" href="beer_add.php">Ajouter une bière</a>
+                </div>
             </li>
-            <li class="nav-item <?php if ($page == 'beer_add') { echo 'active'; } ?>">
-                <a class="nav-link" href="beer_add.php">Add bière</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?php echo ($page == 'brewery_list' || $page == 'brewery_add') ? 'active' : '' ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brasseries</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="brewery_list.php">Les brasseries</a>
+                    <a class="dropdown-item" href="brewery_add.php">Ajouter une brasserie</a>
+                </div>
             </li>
-            <li class="nav-item <?php if ($page == 'brewery_list') { echo 'active'; } ?>">
-                <a class="nav-link" href="brewery_list.php">Brasserie</a>
-            </li>         
-            <li class="nav-item <?php if ($page == 'brewery_add') { echo 'active'; } ?>">
-                <a class="nav-link" href="brewery_add.php">Add brasserie</a>
-            </li>   
+            <li class="nav-item <?php echo ($page == 'register') ? 'active' : '' ?>">
+                <a class="nav-link" href="register.php">Inscription</a>
+            </li>
+            <li class="nav-item <?php echo ($page == 'login') ? 'active' : '' ?>">
+                <a class="nav-link" href="login.php">Login</a>
+            </li>
         </ul>
     </div>
   </div>

@@ -1,3 +1,4 @@
+
 <?php
 
 // Inclure le fichier config/database.php
@@ -8,8 +9,8 @@ require('partials/header.php');
 
 $query = $db->query('SELECT * FROM brewery');
 $breweries= $query->fetchAll();
-$countSQL++;
-var_dump($breweries);
+
+
 
 ?>
 
@@ -39,7 +40,7 @@ var_dump($breweries);
       <td><?php echo $brewery['city'] ?></td>
       <td><?php echo $brewery['zip'] ?></td>
       <td><?php echo $brewery['country'] ?></td>
-      <td><a href="brewery_single.php">Contact</a></td>
+      <td><a href="brewery_single.php?id=<?php echo $brewery['id'] ?>">Contact</a></td>
       </tr>
     <?php } ?>
       
