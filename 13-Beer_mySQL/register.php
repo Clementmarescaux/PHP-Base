@@ -5,11 +5,15 @@
 
 require('partials/header.php');
 
+if (userIsLogged()) {
+    header('Location: index.php');
+    exit();
+}
 
 ?>
 <div class="bg bg6">
     <div class="container">
-        <h1 class="d-flex justify-content-end text-left">Inscription</h1>
+        <h1 class="text-left">Inscription</h1>
     </div>
     <br />
 
@@ -54,7 +58,7 @@ require('partials/header.php');
 
     <div class="container">
         <div class="row">
-        <div class="col-6 offset-6">
+        <div class="col-6">
                 <form method="POST" class="clearfix" enctype="multipart/form-data">
                     <div class="form-group ">                   
                         <input type="text" class="form-control" name="login" id="login" placeholder="Nom d'utilisateur">    

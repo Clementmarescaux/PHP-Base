@@ -9,7 +9,7 @@ $beers= $query->fetchAll();
 
 ?>
 
-<div class="bg bg5">
+<div class="head">
     <div class="container pt-5">
         <h1 class="d-flex justify-content-center text-left">Nouvelle brasserie</h1>
     </div>

@@ -8,7 +8,7 @@ require('partials/header.php');
 
 ?>
 <!-- Le contenu de la page -->
-<div class="head">
+<div class="bg bg7">
     <div class="container">
         <h1 class="d-flex justify-content-end text-left">Welcome to Mon Bière Shop</h1>
     </div>

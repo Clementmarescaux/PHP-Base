@@ -1,4 +1,23 @@
+#logout , .form-check-label {
+    color: white;
+    text-shadow:2px 2px 10px black;
+}
 
+.checkboxes {
+    margin: 1rem 0;
+}
+
+.byebtn {
+    min-width: 200px;
+}
+
+form {
+    min-width: 300px;
+}
+
+form .btn {
+    box-shadow: 1px 1px 5px black;
+}
 
 .navbar-light {
     box-shadow: 0 0 50px black;
@@ -61,6 +80,10 @@ nav {
     background-image: url(../img/background6.jpg);
 }
 
+.bg7 {
+    background-image: url(../img/background7.jpg);
+}
+
 
 
 .lead-sentence {
@@ -76,6 +99,14 @@ nav {
 .lead-sentence h2{
     font-size: 3em;
     color: white;
+    min-width: 200px;
+    text-shadow:2px 2px 10px black;
+}
+
+h3 {
+    font-size: 2rem;
+    color: white;
+    min-width: 200px;
     text-shadow:2px 2px 10px black;
 }
 
@@ -94,6 +125,10 @@ h1 {
 .no-border {
     border: 0;
     box-shadow: 0 0 20px grey;
+}
+
+.welcomeLogin {
+    color: rgb(209, 56, 17);
 }
 
 .btn {

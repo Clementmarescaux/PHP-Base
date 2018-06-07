@@ -1,10 +1,9 @@
 <?php 
  // Configuration de PDO pour la BDD
  // On utilise la notation absolue pour se repérer
+ session_start();
  require(__DIR__.'/../config/database.php');
-
-
-
+ require(__DIR__.'/../config/functions.php');
 
 ?>
 
@@ -55,12 +54,29 @@
                     <a class="dropdown-item" href="brewery_add.php">Ajouter une brasserie</a>
                 </div>
             </li>
-            <li class="nav-item <?php echo ($page == 'register') ? 'active' : '' ?>">
-                <a class="nav-link" href="register.php">Inscription</a>
-            </li>
-            <li class="nav-item <?php echo ($page == 'login') ? 'active' : '' ?>">
-                <a class="nav-link" href="login.php">Login</a>
-            </li>
+            
+            <?php
+                if (empty($_SESSION['user'])) { 
+                    ?>
+                    <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?php echo ($page == 'register') || $page == 'login' ? 'active' : '' ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilisateur</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="register.php">Inscription</a>
+                    <a class="dropdown-item" href="login.php">Login</a>
+                </div>
+                </li> 
+                <?php } else { ?>
+                    <span class="navbar-text d-none d-xl-inline-block">
+                        <strong class="welcomeLogin">
+                            <?php echo ('Bonjour ' . $_SESSION['user']['login']); ?>
+                        </strong>
+                     </span>
+                    <li class="nav-item <?php echo ($page == 'logout') ? 'active' : '' ?>">
+                        <a class="nav-link" href="logout.php">Se déconnecter</a>
+                    </li>
+                    
+               <?php } ?>
+
         </ul>
     </div>
   </div>
@@ -68,7 +84,9 @@
 
 
 <?php
-
+// echo ('<br/ ><br/> <br/> <br/ > <br/>');
+// var_dump($_SESSION);
+ // var_dump($_SERVER['HTTP_REFERER']);
 // GERER LE ITEM ACTIVE
  // ====> var_dump(basename($_SERVER['REQUEST_URI'], '.php')); 
  // $page = basename($_SERVER['REQUEST_URI'], '.php');

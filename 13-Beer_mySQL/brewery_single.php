@@ -5,11 +5,11 @@
 require('partials/header.php');
 $id = $_GET['id'];
 
-$query = $db->prepare('SELECT * FROM brewery WHERE id = :id'); 
-$query->bindvalue(':id', $id, PDO::PARAM_INT); 
-$query->execute();
-$brewery = $query->fetch();
 
+    $query = $db->prepare('SELECT * FROM brewery WHERE id = :id'); 
+    $query->bindvalue(':id', $id, PDO::PARAM_INT); 
+    $query->execute();
+    $brewery = $query->fetch();
 
 ?>
 
