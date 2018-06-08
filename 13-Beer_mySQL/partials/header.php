@@ -16,6 +16,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
@@ -72,7 +73,7 @@
                         </strong>
                      </span>
                     <li class="nav-item <?php echo ($page == 'logout') ? 'active' : '' ?>">
-                        <a class="nav-link" href="logout.php">Se déconnecter</a>
+                        <a class="nav-link" href="logout.php">Se déconnecter <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                     </li>
                     
                <?php } ?>

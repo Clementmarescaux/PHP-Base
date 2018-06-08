@@ -43,7 +43,9 @@ $breweries= $query->fetchAll();
             <td>
               <a href="brewery_single.php?id=<?php echo $brewery['id'] ?>">Voir</a><br/>
               <?php if (userIsLogged()) { ?>
-              <a class="text-danger" href="brewery_delete.php?id=<?php echo $brewery['id'] ?>">Supprimer</a>
+              <a class="text-success confirm-success" href="brewery_edit.php?id=<?php echo $brewery['id'] ?>">Modifier</a> <br />
+              <a class="text-danger confirm-delete" href="brewery_delete.php?id=<?php echo $brewery['id'] ?>">Supprimer</a>
+             
               <?php } ?>
             </td> 
          </tr>

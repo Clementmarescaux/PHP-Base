@@ -10,6 +10,11 @@ if (userIsLogged()) {
     exit();
 }
 
+$login = null;
+$email = null;
+$password = null;
+$confirmPassword = null;
+
 ?>
 <div class="bg bg6">
     <div class="container">
@@ -28,15 +33,19 @@ if (userIsLogged()) {
 
             if (empty($login)) {
                 $errors['login'] = 'Le login est vide.';
+                echo '<div class="alert alert-danger">' . $errors['login'] . '</div>';
             }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors['email'] = 'L\'e-mail n\'est pas valide.';
+                echo '<div class="alert alert-danger">' . $errors['email'] . '</div>';
             }
 
             if (empty($password) || $password != $confirmPassword) {
                 $errors['password'] = 'Les mots de passe ne correspondent pas';
+                echo '<div class="alert alert-danger">' . $errors['password'] . '</div>';
             }
+           
 
                 if (empty($errors)) {
                     $query = $db->prepare('INSERT INTO user (login, email, password, created_at) VALUES (:login, :email, :password, NOW())');
@@ -50,7 +59,7 @@ if (userIsLogged()) {
                     } 
             }
 
-          //  var_dump($login, $email, $password, $confirmPassword ,$errors);
+           // var_dump($login, $email, $password, $confirmPassword ,$errors);
         }
         
     ?>

@@ -24,6 +24,16 @@ function saveLastVisitedPage() {
 
 saveLastVisitedPage();
     
+function breweryExists($id) {
+    global $db;  // Permet d'utiliser la variable $db définie en dehors de la fonction
+    $query = $db->prepare('SELECT * FROM brewery WHERE id = :id');
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+    $brewery = $query->fetch();
+    
+    return $brewery; // La fonction retourne un tableau avec la brasserie ou false si la brasserie n'existe pas
+}
+
 // Renvoie true si qqn est connecté ou false si pas connecté
 
 function userIslogged() {

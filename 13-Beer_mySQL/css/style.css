@@ -213,3 +213,7 @@ input {
 footer {
     margin-top: 6rem;
 }
+
+td {
+    vertical-align: middle;
+}

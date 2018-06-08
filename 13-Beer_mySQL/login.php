@@ -68,12 +68,15 @@ if (!empty($_POST)) {
                     </div> 
                     <div class="form-check">
                         <input class="form-check-input checkboxes" name=rememberme" type="checkbox" id=rememberme">
-                        <label class="form-check-label ml-5" for=rememberme">
+                        <label class="form-check-label ml-5" for="rememberme">
                                   Remember me
                         </label>
                     </div>
-                    <button type="submit" class="btn float-right">Je me connecte !</button>                   
+                    
+                    <button type="submit" class="btn float-right">Je me connecte !</button>
+                                      
                 </form>
+                <a class="text-center" href="forget_password.php"> Mot de passe oublié ?</a> 
             </div>
         </div>
     </div>
